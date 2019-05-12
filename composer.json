@@ -1,0 +1,21 @@
+{
+    "name": "perfectneeds/locale-bundle",
+    "description": "manage multi languages on project",
+    "keywords": ["PerfectNeeds", "Locale Bundle"],
+    "homepage": "http://perfectneeds.github.com",
+    "type": "symfony-library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Peter Nassef",
+            "email": "peter.nassef@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "PNLocaleBundle\\": ""
+        }
+    },
+    "require": {}
+}

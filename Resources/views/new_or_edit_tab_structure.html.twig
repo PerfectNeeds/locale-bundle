@@ -1,0 +1,27 @@
+{% set languages = pnLanguages() %}
+{% set defaultLocale = getParameter('locale') %}
+<div class="panel panel-flat">
+    <div class="panel-body">
+        <div class="tabbable">
+            <ul class="nav nav-tabs nav-tabs-highlight">
+                <li class="active"><a href="#locale-tab-{{ defaultLocale }}" data-toggle="tab"><img src="{{ asset('admin/images/flags/us.png') }}"/> English (Default)</a></li>
+                        {% for language in languages %}
+                    <li>
+                        <a href="#locale-tab-{{ language.locale }}" data-toggle="tab"><img src="{{ asset(language.flagAsset) }}"/> {{ language.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="locale-tab-{{ defaultLocale }}">
+                    {{ defaultTwig|raw }}
+                </div>
+                {% for language in languages %}
+                    <div class="tab-pane" id="locale-tab-{{ language.locale }}">
+                        {{ include(transTwigPath, {"locale":language.locale} ) }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
