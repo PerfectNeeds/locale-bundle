@@ -1,8 +1,8 @@
 <?php
 
-namespace PNLocaleBundle\Twig;
+namespace PN\LocaleBundle\Twig;
 
-use PNLocaleBundle\Twig\VarsRuntime;
+use PN\LocaleBundle\Twig\VarsRuntime;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 

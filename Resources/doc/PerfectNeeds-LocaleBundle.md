@@ -9,7 +9,7 @@ https://github.com/vm5/EntityTranslationsBundle
 - composer require vm5/entity-translations-bundle
 - Register bundle in AppKernel.php: `new VM5\EntityTranslationsBundle\VM5EntityTranslationsBundle()`
 - Copy LocaleBundle inside your ptoject in `src/PN/Bundle`
-- Register bundle in AppKernel.php: `new PNLocaleBundle\LocaleBundle()`
+- Register bundle in AppKernel.php: `new PN\LocaleBundle\LocaleBundle()`
 - Add messages file into `app/Resources/translations` for each language called messages.{LOCALE}.php (ex. messages.ar.php)
 - You must add this code in config.yml: 
 ```yaml
@@ -53,7 +53,7 @@ namespace PN\Bundle\CMSBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use VM5\EntityTranslationsBundle\Model\Translatable;
-use PNLocaleBundle\Model\LocaleTrait;
+use PN\LocaleBundle\Model\LocaleTrait;
 
 /**
  * Blogger
@@ -149,7 +149,7 @@ namespace PN\Bundle\CMSBundle\Entity\Translation;
 
 use Doctrine\ORM\Mapping as ORM;
 use VM5\EntityTranslationsBundle\Model\EditableTranslation;
-use PNLocaleBundle\Model\TranslationEntity;
+use PN\LocaleBundle\Model\TranslationEntity;
 
 /**
  * @ORM\Entity
@@ -174,7 +174,7 @@ class BloggerTranslation extends TranslationEntity implements EditableTranslatio
     /**
      * @var Language
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="PNLocaleBundle\Entity\Language")
+     * @ORM\ManyToOne(targetEntity="PN\LocaleBundle\Entity\Language")
      */
     protected $language;
 

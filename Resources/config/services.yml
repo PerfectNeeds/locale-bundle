@@ -8,6 +8,6 @@ services:
         # if you need to do this, you can override this setting on individual services
         public: true
         
-    PNLocaleBundle\Twig\:
+    PN\LocaleBundle\Twig\:
         public: false
         resource: '../../Twig/*'

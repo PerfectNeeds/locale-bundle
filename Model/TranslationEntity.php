@@ -1,6 +1,6 @@
 <?php
 
-namespace PNLocaleBundle\Model;
+namespace PN\LocaleBundle\Model;
 
 abstract class TranslationEntity {
 
@@ -23,7 +23,7 @@ abstract class TranslationEntity {
     /**
      * Set language
      *
-     * @param \PNLocaleBundle\Entity\Language $language
+     * @param \PN\LocaleBundle\Entity\Language $language
      *
      * @return BloggerTranslation
      */
@@ -36,7 +36,7 @@ abstract class TranslationEntity {
     /**
      * Get language
      *
-     * @return \PNLocaleBundle\Entity\Language
+     * @return \PN\LocaleBundle\Entity\Language
      */
     public function getLanguage() {
         return $this->language;

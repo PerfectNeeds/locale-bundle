@@ -1,9 +1,9 @@
 <?php
 
-namespace PNLocaleBundle\Model;
+namespace PN\LocaleBundle\Model;
 
 use VM5\EntityTranslationsBundle\Model\Translation;
-use PNLocaleBundle\Model\TranslationEntity;
+use PN\LocaleBundle\Model\TranslationEntity;
 
 trait LocaleTrait {
 

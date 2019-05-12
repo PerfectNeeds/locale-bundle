@@ -1,6 +1,6 @@
 <?php
 
-namespace PNLocaleBundle\Twig;
+namespace PN\LocaleBundle\Twig;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Twig\Extension\RuntimeExtensionInterface;

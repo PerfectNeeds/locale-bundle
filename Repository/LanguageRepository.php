@@ -1,6 +1,6 @@
 <?php
 
-namespace PNLocaleBundle\Repository;
+namespace PN\LocaleBundle\Repository;
 
 /**
  * LanguageRepository

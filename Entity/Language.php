@@ -1,6 +1,6 @@
 <?php
 
-namespace PNLocaleBundle\Entity;
+namespace PN\LocaleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Language
  *
  * @ORM\Table(name="language")
- * @ORM\Entity(repositoryClass="PNLocaleBundle\Repository\LanguageRepository")
+ * @ORM\Entity(repositoryClass="PN\LocaleBundle\Repository\LanguageRepository")
  */
 class Language implements \VM5\EntityTranslationsBundle\Model\Language {
 

@@ -8,7 +8,7 @@
 <li>composer require vm5/entity-translations-bundle</li>
 <li>Register bundle in AppKernel.php: <code>new VM5\EntityTranslationsBundle\VM5EntityTranslationsBundle()</code></li>
 <li>Copy LocaleBundle inside your ptoject in <code>src/PN/Bundle</code></li>
-<li>Register bundle in AppKernel.php: <code>new PNLocaleBundle\LocaleBundle()</code></li>
+<li>Register bundle in AppKernel.php: <code>new PN\LocaleBundle\LocaleBundle()</code></li>
 <li>Add messages file into <code>app/Resources/translations</code> for each language called messages.{LOCALE}.php (ex. messages.ar.php)</li>
 <li>You must add this code in config.yml:</li>
 </ul>
@@ -162,7 +162,7 @@ doctrine:
     <span class="hljs-comment">/**
      * <span class="hljs-doctag">@var</span> Language
      * <span class="hljs-doctag">@ORM</span>\Id
-     * <span class="hljs-doctag">@ORM</span>\ManyToOne(targetEntity="PNLocaleBundle\Entity\Language")
+     * <span class="hljs-doctag">@ORM</span>\ManyToOne(targetEntity="PN\LocaleBundle\Entity\Language")
      */</span>
     <span class="hljs-keyword">protected</span> <span class="hljs-variable">$language</span>;
 
