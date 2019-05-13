@@ -16,7 +16,7 @@ class VarsRuntime implements RuntimeExtensionInterface {
     }
 
     public function pnLanguages() {
-        return $this->em->getRepository('LocaleBundle:Language')->findAll();
+        return $this->em->getRepository('PNLocaleBundle:Language')->findAll();
     }
 
 }
