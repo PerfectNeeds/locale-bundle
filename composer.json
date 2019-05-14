@@ -16,5 +16,9 @@
             "PN\\LocaleBundle\\": ""
         }
     },
-    "require": {}
+    "require": {
+        "php": "^5.5.9 || ^7.0",
+        "symfony/framework-bundle": " ^3.4",
+        "vm5/entity-translations-bundle": "^2.0"
+    }
 }
