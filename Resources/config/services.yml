@@ -11,3 +11,7 @@ services:
     PN\LocaleBundle\Twig\:
         public: false
         resource: '../../Twig/*'
+    
+    PN\LocaleBundle\Form\:
+        public: false
+        resource: '../../Form/*'

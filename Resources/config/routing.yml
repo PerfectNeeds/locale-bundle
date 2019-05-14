@@ -1,0 +1,4 @@
+seo_admin:
+    resource: "@PNLocaleBundle/Controller/Administration"
+    type:     annotation
+    prefix:   /admin/locale

@@ -1,0 +1,47 @@
+{% extends 'adminTemplate/base.html.twig' %}
+{% import 'adminTemplate/macros.html.twig' as macros %}
+{% set page_title %}Edit Language{% endset %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="{{ path('dashboard') }}"><i class="icon-home2 position-left"></i>Dashboard</a></li>
+            <li><a href="{{ path('pn_locale_language_index') }}">Language list</a></li>
+            <li class="active">{{ page_title }}</li>
+        </ul>
+
+    </div>
+{% endblock %}
+{% block body %}
+
+    {{ form_start(edit_form, {'attr':{'class':'form-validate-jquery','novalidate':'novalidate'}}) }}
+    <div class="panel panel-flat">
+        <div class="panel-body">
+            <div class="row">
+                {{ macros.input(edit_form.locale) }}
+                {{ macros.input(edit_form.title) }}
+            </div>
+            <div class="row">
+                {{ macros.input(edit_form.flagAsset) }}
+            </div>
+
+        </div>
+        <div class="panel-footer">
+            {% include 'adminTemplate/saveAndResetFormFooter.html.twig' %}
+        </div>
+    </div>
+    {{ form_end(edit_form) }}
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('admin/js/plugins/forms/validation/validate.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('admin/js/plugins/forms/selects/select2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('admin/js/pages/form_validation.js') }}"></script>
+    <script>
+        $("#pn_locale_bundle_language_locale").change(function () {
+            var languageName = $(this).find("option:selected").data("name");
+            $('#pn_locale_bundle_language_title').val(languageName);
+        });
+    </script>
+{% endblock javascripts %}

@@ -3,10 +3,13 @@
 namespace PN\LocaleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Language
  *
+ * @UniqueEntity("locale")
  * @ORM\Table(name="language")
  * @ORM\Entity(repositoryClass="PN\LocaleBundle\Repository\LanguageRepository")
  */
@@ -23,14 +26,15 @@ class Language implements \VM5\EntityTranslationsBundle\Model\Language {
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="locale", type="string", length=5)
+     * @Assert\NotBlank()
+     * @ORM\Column(name="locale", type="string", length=5, unique=true)
      */
     private $locale;
 
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="title", type="string", length=45)
      */
     private $title;
