@@ -6,7 +6,7 @@ Very simple bundle that allows you to translate your entities.
 https://github.com/vm5/EntityTranslationsBundle
 
 ## Installation: 
-- composer require vm5/entity-translations-bundle
+- composer require perfectneeds/locale-bundle "~1.0"
 - Register bundle in AppKernel.php: `new VM5\EntityTranslationsBundle\VM5EntityTranslationsBundle()`
 - Copy LocaleBundle inside your ptoject in `src/PN/Bundle`
 - Register bundle in AppKernel.php: `new PN\LocaleBundle\LocaleBundle()`
