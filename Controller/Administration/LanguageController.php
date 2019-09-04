@@ -1,4 +1,4 @@
-<?php
+e<?php
 
 namespace PN\LocaleBundle\Controller\Administration;
 
@@ -40,10 +40,6 @@ class LanguageController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
         if ($form->isSubmitted() && $form->isValid()) {
-
-            $userName = $this->get('user')->getUserName();
-            $language->setCreator($userName);
-            $language->setModifiedBy($userName);
             $em->persist($language);
             $em->flush();
 
@@ -71,9 +67,6 @@ class LanguageController extends Controller {
         $editForm->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-
-            $userName = $this->get('user')->getUserName();
-            $language->setModifiedBy($userName);
             $em->flush();
 
             $this->addFlash('success', 'Successfully updated');
