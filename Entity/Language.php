@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="language")
  * @ORM\Entity(repositoryClass="PN\LocaleBundle\Repository\LanguageRepository")
  */
-class Language implements \VM5\EntityTranslationsBundle\Model\Language {
+class Language implements \Arxy\EntityTranslationsBundle\Model\Language {
 
     /**
      * @var int

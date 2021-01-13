@@ -3,11 +3,11 @@
 Very simple bundle that allows you to translate your entities.
 
 ##### Reference Repo.
-https://github.com/vm5/EntityTranslationsBundle
+https://github.com/Warxcell/EntityTranslationsBundle
 
 ## Installation: 
-- composer require vm5/entity-translations-bundle
-- Register bundle in AppKernel.php: `new VM5\EntityTranslationsBundle\VM5EntityTranslationsBundle()`
+- composer require arxy/entity-translations-bundle
+- Register bundle in AppKernel.php: `new Arxy\EntityTranslationsBundle\ArxyEntityTranslationsBundle()`
 - Copy LocaleBundle inside your ptoject in `src/PN/Bundle`
 - Register bundle in AppKernel.php: `new PN\LocaleBundle\LocaleBundle()`
 - Add messages file into `app/Resources/translations` for each language called messages.{LOCALE}.php (ex. messages.ar.php)
@@ -21,13 +21,13 @@ doctrine:
    orm:
         # search for the "ResolveTargetEntityListener" class for an article about this
         resolve_target_entities: 
-            VM5\EntityTranslationsBundle\Model\Language: 
+            Arxy\EntityTranslationsBundle\Model\Language: 
 ```
 
 
 ### Change the Locale in API methods
 ``` php
-$this->get('vm5_entity_translations.translator')->setLocale('ar'); //translate entities
+$this->get('arxy_entity_translations.translator')->setLocale('ar'); //translate entities
 $this->get('translator')->setLocale('ar'); // translates messages
 ```
 
@@ -52,7 +52,7 @@ cms:
 namespace PN\Bundle\CMSBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use VM5\EntityTranslationsBundle\Model\Translatable;
+use Arxy\EntityTranslationsBundle\Model\Translatable;
 use PN\LocaleBundle\Model\LocaleTrait;
 
 /**
@@ -148,7 +148,7 @@ BloggerTranslation.php in `CMSBundle/Entity/Translation`
 namespace PN\Bundle\CMSBundle\Entity\Translation;
 
 use Doctrine\ORM\Mapping as ORM;
-use VM5\EntityTranslationsBundle\Model\EditableTranslation;
+use Arxy\EntityTranslationsBundle\Model\EditableTranslation;
 use PN\LocaleBundle\Model\TranslationEntity;
 
 /**
@@ -278,7 +278,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use VM5\EntityTranslationsBundle\Form\Type\TranslationsType;
+use Arxy\EntityTranslationsBundle\Form\Type\TranslationsType;
 use PN\Bundle\CMSBundle\Form\Translation\BloggerTranslationType;
 use PN\Bundle\CMSBundle\Entity\BloggerTag;
 use PN\Bundle\SeoBundle\Form\SeoType;

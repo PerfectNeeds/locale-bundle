@@ -2,17 +2,18 @@
 
 namespace PN\LocaleBundle\Model;
 
-use VM5\EntityTranslationsBundle\Model\Translation;
-use PN\LocaleBundle\Model\TranslationEntity;
+use Arxy\EntityTranslationsBundle\Model\Translation;
 
-trait LocaleTrait {
+trait LocaleTrait
+{
 
     protected $currentTranslation;
 
     /**
      * This method is used by bundle to inject current translation.
      */
-    public function setCurrentTranslation(Translation $translation = null) {
+    public function setCurrentTranslation(Translation $translation = null)
+    {
         $this->currentTranslation = $translation;
     }
 
@@ -23,9 +24,10 @@ trait LocaleTrait {
      *
      * @return Blogger
      */
-    public function addTranslation(TranslationEntity $translation) {
-        if (!$this->translations instanceof \Doctrine\ORM\PersistentCollection AND ! $this->translations instanceof \Doctrine\Common\Collections\ArrayCollection) {
-            throw new \Exception('Error: Add $this->translations = new \Doctrine\Common\Collections\ArrayCollection() to ' . __CLASS__ . '::__construct() method');
+    public function addTranslation(TranslationEntity $translation)
+    {
+        if (!$this->translations instanceof \Doctrine\ORM\PersistentCollection AND !$this->translations instanceof \Doctrine\Common\Collections\ArrayCollection) {
+            throw new \Exception('Error: Add $this->translations = new \Doctrine\Common\Collections\ArrayCollection() to '.__CLASS__.'::__construct() method');
         }
         if (!$this->translations->contains($translation)) {
             $this->translations->add($translation);
@@ -40,9 +42,10 @@ trait LocaleTrait {
      *
      * @param \PN\Bundle\CMSBundle\Entity\Translation\BloggerTranslation $translation
      */
-    public function removeTranslation(TranslationEntity $translation) {
-        if (!$this->translations instanceof \Doctrine\ORM\PersistentCollection AND ! $this->translations instanceof \Doctrine\Common\Collections\ArrayCollection) {
-            throw new \Exception('Error: Add $this->translations = new \Doctrine\Common\Collections\ArrayCollection() to ' . __CLASS__ . '::__construct() method');
+    public function removeTranslation(TranslationEntity $translation)
+    {
+        if (!$this->translations instanceof \Doctrine\ORM\PersistentCollection AND !$this->translations instanceof \Doctrine\Common\Collections\ArrayCollection) {
+            throw new \Exception('Error: Add $this->translations = new \Doctrine\Common\Collections\ArrayCollection() to '.__CLASS__.'::__construct() method');
         }
         $this->translations->removeElement($translation);
         $translation->setTranslatable(null);
@@ -53,7 +56,8 @@ trait LocaleTrait {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getTranslations() {
+    public function getTranslations()
+    {
         return $this->translations;
     }
 

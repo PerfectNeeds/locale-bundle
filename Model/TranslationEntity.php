@@ -27,7 +27,7 @@ abstract class TranslationEntity {
      *
      * @return BloggerTranslation
      */
-    public function setLanguage(\VM5\EntityTranslationsBundle\Model\Language $language) {
+    public function setLanguage(\Arxy\EntityTranslationsBundle\Model\Language $language) {
         $this->language = $language;
 
         return $this;
