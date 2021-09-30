@@ -12,7 +12,7 @@ trait LocaleTrait
     /**
      * This method is used by bundle to inject current translation.
      */
-    public function setCurrentTranslation(Translation $translation = null)
+    public function setCurrentTranslation(?Translation $translation = null):void
     {
         $this->currentTranslation = $translation;
     }
