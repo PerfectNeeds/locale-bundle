@@ -19,6 +19,6 @@
     "require": {
         "php": "^7.3 || ^8.0",
         "symfony/framework-bundle": "~4.0|~5.0|~6.0",
-        "arxy/entity-translations-bundle": "^3.0"
+        "arxy/entity-translations-bundle": "^4.0"
     }
 }
