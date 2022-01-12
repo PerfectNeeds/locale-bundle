@@ -13,11 +13,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="language")
  * @ORM\Entity(repositoryClass="PN\LocaleBundle\Repository\LanguageRepository")
  */
-class Language implements \Arxy\EntityTranslationsBundle\Model\Language {
+class Language implements \Arxy\EntityTranslationsBundle\Model\Language
+{
 
     /**
-     * @var int
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -25,99 +24,60 @@ class Language implements \Arxy\EntityTranslationsBundle\Model\Language {
     private $id;
 
     /**
-     * @var string
      * @Assert\NotBlank()
      * @ORM\Column(name="locale", type="string", length=5, unique=true)
      */
     private $locale;
 
     /**
-     * @var string
-     *
      * @Assert\NotBlank()
      * @ORM\Column(name="title", type="string", length=45)
      */
     private $title;
 
     /**
-     * @var string
-     *
      * @ORM\Column(name="flag_asset", type="string", length=45)
      */
     private $flagAsset;
 
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
-    /**
-     * Set locale
-     *
-     * @param string $locale
-     *
-     * @return Language
-     */
-    public function setLocale($locale) {
+    public function setLocale(string $locale)
+    {
         $this->locale = $locale;
 
         return $this;
     }
 
-    /**
-     * Get locale
-     *
-     * @return string
-     */
-    public function getLocale() {
+    public function getLocale(): string
+    {
         return $this->locale;
     }
 
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Language
-     */
-    public function setTitle($title) {
+    public function setTitle(string $title)
+    {
         $this->title = $title;
 
         return $this;
     }
 
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle() {
+    public function getTitle(): string
+    {
         return $this->title;
     }
 
-    /**
-     * Set flagAsset
-     *
-     * @param string $flagAsset
-     *
-     * @return Language
-     */
-    public function setFlagAsset($flagAsset) {
+    public function setFlagAsset(string $flagAsset)
+    {
         $this->flagAsset = $flagAsset;
 
         return $this;
     }
 
-    /**
-     * Get flagAsset
-     *
-     * @return string
-     */
-    public function getFlagAsset() {
+    public function getFlagAsset(): string
+    {
         return $this->flagAsset;
     }
 

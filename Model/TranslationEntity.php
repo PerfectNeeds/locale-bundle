@@ -2,43 +2,32 @@
 
 namespace PN\LocaleBundle\Model;
 
-abstract class TranslationEntity {
+use Arxy\EntityTranslationsBundle\Model\Language;
 
-    /**
-     * Set translatable
-     */
-    public function setTranslatable($translatable = null) {
+abstract class TranslationEntity
+{
+
+    public function setTranslatable($translatable = null)
+    {
         $this->translatable = $translatable;
 
         return $this;
     }
 
-    /**
-     * Get translatable
-     */
-    public function getTranslatable() {
+    public function getTranslatable()
+    {
         return $this->translatable;
     }
 
-    /**
-     * Set language
-     *
-     * @param \PN\LocaleBundle\Entity\Language $language
-     *
-     * @return BloggerTranslation
-     */
-    public function setLanguage(\Arxy\EntityTranslationsBundle\Model\Language $language) {
+    public function setLanguage(Language $language): void
+    {
         $this->language = $language;
 
-        return $this;
+        //        return $this;
     }
 
-    /**
-     * Get language
-     *
-     * @return \PN\LocaleBundle\Entity\Language
-     */
-    public function getLanguage() {
+    public function getLanguage(): Language
+    {
         return $this->language;
     }
 
