@@ -2,7 +2,7 @@
 
 namespace PN\LocaleBundle\Model;
 
-use Arxy\EntityTranslationsBundle\Model\Translation;
+use PN\LocaleBundle\Model\Translation;
 
 trait LocaleTrait
 {

@@ -2,19 +2,31 @@
 
 namespace PN\LocaleBundle\Twig;
 
-use PN\LocaleBundle\Twig\VarsRuntime;
 use Twig\Extension\AbstractExtension;
+use Twig\Extension\ExtensionInterface;
+use Twig\TwigFilter;
 use Twig\TwigFunction;
 
-class VarsExtension extends AbstractExtension {
+class VarsExtension extends AbstractExtension implements ExtensionInterface
+{
 
-    public function getFunctions() {
-        return array(
-            new TwigFunction('pnLanguages', array(VarsRuntime::class, 'pnLanguages')),
-        );
+    public function getFunctions(): array
+    {
+        return [
+            new TwigFunction('pnLanguages', [VarsRuntime::class, 'pnLanguages']),
+        ];
     }
 
-    public function getName() {
+    public function getFilters(): array
+    {
+        return [
+            new TwigFilter('translation', [VarsRuntime::class, 'getTranslation']),
+            new TwigFilter('translate', [VarsRuntime::class, 'translate']),
+        ];
+    }
+
+    public function getName(): string
+    {
         return 'locale.twig.extension';
     }
 

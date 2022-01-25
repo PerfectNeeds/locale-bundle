@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+
+    <services>
+        <service id="pn.entity_translations.translator"
+                 alias="PN\LocaleBundle\Translator">
+        </service>
+
+        <service id="PN\LocaleBundle\Translator">
+            <argument>en</argument>
+            <call method="setPropertyAccessor">
+                <argument type="service" id="property_accessor" on-invalid="ignore"/>
+            </call>
+        </service>
+
+        <service id="pn.entity_translations.doctrine.translation_loader"
+                 class="PN\LocaleBundle\EventSubscriber\CurrentTranslationLoader"
+                 public="false">
+            <argument type="service" id="pn.entity_translations.translator"/>
+            <tag name="doctrine.event_subscriber"/>
+        </service>
+
+        <service id="PN\LocaleBundle\Guesser\GuesserLoader">
+            <argument type="service" id="pn.entity_translations.translator"/>
+            <argument type="collection">
+                <argument type="service" id="PN\LocaleBundle\Guesser\SymfonyTranslationGuesser"/>
+            </argument>
+        </service>
+
+        <service id="pn.entity_translations.locale_loader"
+                 class="PN\LocaleBundle\EventSubscriber\LocaleListener"
+                 public="true">
+            <tag name="kernel.event_subscriber"/>
+            <argument type="service" id="PN\LocaleBundle\Guesser\GuesserLoader"/>
+        </service>
+
+        <service id="PN\LocaleBundle\Form\Type\TranslationsType">
+            <argument type="service" id="doctrine"/>
+            <tag name="form.type"/>
+        </service>
+
+        <service id="PN\LocaleBundle\Guesser\SymfonyTranslationGuesser">
+            <argument type="service" id="translator"/>
+        </service>
+    </services>
+</container>

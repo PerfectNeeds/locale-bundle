@@ -2,7 +2,7 @@
 
 namespace PN\LocaleBundle\Model;
 
-use Arxy\EntityTranslationsBundle\Model\Language;
+use PN\LocaleBundle\Model\Language;
 
 abstract class TranslationEntity
 {
@@ -22,8 +22,6 @@ abstract class TranslationEntity
     public function setLanguage(Language $language): void
     {
         $this->language = $language;
-
-        //        return $this;
     }
 
     public function getLanguage(): Language

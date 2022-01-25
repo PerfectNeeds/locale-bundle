@@ -2,8 +2,10 @@
 
 namespace PN\LocaleBundle\Controller\Administration;
 
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use PN\LocaleBundle\Entity\Language;
 use PN\LocaleBundle\Form\LanguageType;
@@ -13,32 +15,30 @@ use PN\LocaleBundle\Form\LanguageType;
  *
  * @Route("/language")
  */
-class LanguageController extends Controller {
+class LanguageController extends AbstractController
+{
 
     /**
-     * Lists all Language entities.
-     *
      * @Route("/", name="pn_locale_language_index", methods={"GET"})
      */
-    public function indexAction() {
-        $em = $this->getDoctrine()->getManager();
-        $languages = $em->getRepository('PNLocaleBundle:Language')->findAll();
-        return $this->render('PNLocaleBundle:Administration/Language:index.html.twig', [
-                    "languages" => $languages,
+    public function indexAction(Request $request, EntityManagerInterface $em): Response
+    {
+        $languages = $em->getRepository(Language::class)->findAll();
+
+        return $this->render('@PNLocale/Administration/Language/index.html.twig', [
+            "languages" => $languages,
         ]);
     }
 
     /**
-     * Creates a new Language entity.
-     *
      * @Route("/new", name="pn_locale_language_new", methods={"GET", "POST"})
      */
-    public function newAction(Request $request) {
+    public function newAction(Request $request, EntityManagerInterface $em): Response
+    {
         $language = new Language();
         $form = $this->createForm(LanguageType::class, $language);
         $form->handleRequest($request);
 
-        $em = $this->getDoctrine()->getManager();
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($language);
             $em->flush();
@@ -48,9 +48,9 @@ class LanguageController extends Controller {
             return $this->redirectToRoute('pn_locale_language_index');
         }
 
-        return $this->render('PNLocaleBundle:Administration/Language:new.html.twig', array(
-                    'language' => $language,
-                    'form' => $form->createView(),
+        return $this->render('@PNLocale/Administration/Language/new.html.twig', array(
+            'language' => $language,
+            'form' => $form->createView(),
         ));
     }
 
@@ -59,13 +59,13 @@ class LanguageController extends Controller {
      *
      * @Route("/{id}/edit", name="pn_locale_language_edit", methods={"GET", "POST"})
      */
-    public function editAction(Request $request, Language $language) {
+    public function editAction(Request $request, Language $language, EntityManagerInterface $em): Response
+    {
 
         $this->denyAccessUnlessGranted('ROLE_SUPER_ADMIN');
 
         $editForm = $this->createForm(LanguageType::class, $language);
         $editForm->handleRequest($request);
-        $em = $this->getDoctrine()->getManager();
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em->flush();
 
@@ -75,19 +75,17 @@ class LanguageController extends Controller {
         }
 
 
-        return $this->render('PNLocaleBundle:Administration/Language:edit.html.twig', array(
-                    'language' => $language,
-                    'edit_form' => $editForm->createView(),
+        return $this->render('@PNLocale/Administration/Language/edit.html.twig', array(
+            'language' => $language,
+            'edit_form' => $editForm->createView(),
         ));
     }
 
     /**
-     * Deletes a Language entity.
-     *
      * @Route("/{id}", name="pn_locale_language_delete", methods={"DELETE"})
      */
-    public function deleteAction(Request $request, Language $language) {
-        $em = $this->getDoctrine()->getManager();
+    public function deleteAction(Request $request, Language $language, EntityManagerInterface $em): Response
+    {
         $em->remove($language);
         $em->flush();
 

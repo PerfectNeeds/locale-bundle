@@ -2,11 +2,11 @@
 <h1><a id="PerfectNeeds_LocaleBundle_0"></a>PerfectNeeds LocaleBundle</h1>
 <p>Very simple bundle that allows you to translate your entities.</p>
 <h5><a id="Reference_Repo_4"></a>Reference Repo.</h5>
-<p><a href="https://github.com/Warxcell/EntityTranslationsBundle">https://github.com/Warxcell/EntityTranslationsBundle</a></p>
+<p><a href="https://github.com/Warxcell/TranslationsBundle">https://github.com/Warxcell/TranslationsBundle</a></p>
 <h2><a id="Installation_7"></a>Installation:</h2>
 <ul>
 <li>composer require arxy/entity-translations-bundle</li>
-<li>Register bundle in AppKernel.php: <code>new Arxy\EntityTranslationsBundle\ArxyEntityTranslationsBundle()</code></li>
+<li>Register bundle in AppKernel.php: <code>new PN\LocaleBundle\ArxyTranslationsBundle()</code></li>
 <li>Copy LocaleBundle inside your ptoject in <code>src/PN/Bundle</code></li>
 <li>Register bundle in AppKernel.php: <code>new PN\LocaleBundle\LocaleBundle()</code></li>
 <li>Add messages file into <code>app/Resources/translations</code> for each language called messages.{LOCALE}.php (ex. messages.ar.php)</li>
@@ -20,10 +20,10 @@ doctrine:
    orm:
         # search for the &quot;ResolveTargetEntityListener&quot; class for an article about this
         resolve_target_entities: 
-            Arxy\EntityTranslationsBundle\Model\Language:
+            PN\LocaleBundle\Model\Language:
 </code></pre>
 <h3><a id="Change_the_Locale_in_API_methods_27"></a>Change the Locale in API methods</h3>
-<pre><code class="language-php"><span class="hljs-variable">$this</span>-&gt;get(<span class="hljs-string">'arxy_entity_translations.translator'</span>)-&gt;setLocale(<span class="hljs-string">'ar'</span>); <span class="hljs-comment">//translate entities</span>
+<pre><code class="language-php"><span class="hljs-variable">$this</span>-&gt;get(<span class="hljs-string">'pn_entity_translations.translator'</span>)-&gt;setLocale(<span class="hljs-string">'ar'</span>); <span class="hljs-comment">//translate entities</span>
 <span class="hljs-variable">$this</span>-&gt;get(<span class="hljs-string">'translator'</span>)-&gt;setLocale(<span class="hljs-string">'ar'</span>); <span class="hljs-comment">// translates messages</span>
 </code></pre>
 <h3><a id="Routing_example_33"></a>Routing example</h3>
@@ -41,7 +41,7 @@ doctrine:
 <span class="hljs-keyword">namespace</span> <span class="hljs-title">PN</span>\<span class="hljs-title">Bundle</span>\<span class="hljs-title">CMSBundle</span>\<span class="hljs-title">Entity</span>;
 
 <span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Mapping</span> <span class="hljs-title">as</span> <span class="hljs-title">ORM</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Arxy</span>\<span class="hljs-title">EntityTranslationsBundle</span>\<span class="hljs-title">Model</span>\<span class="hljs-title">Translatable</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Arxy</span>\<span class="hljs-title">TranslationsBundle</span>\<span class="hljs-title">Model</span>\<span class="hljs-title">Translatable</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-title">PN</span>\<span class="hljs-title">Bundle</span>\<span class="hljs-title">LocaleBundle</span>\<span class="hljs-title">Model</span>\<span class="hljs-title">LocaleTrait</span>;
 
 <span class="hljs-comment">/**
@@ -136,7 +136,7 @@ doctrine:
 <span class="hljs-keyword">namespace</span> <span class="hljs-title">PN</span>\<span class="hljs-title">Bundle</span>\<span class="hljs-title">CMSBundle</span>\<span class="hljs-title">Entity</span>\<span class="hljs-title">Translation</span>;
 
 <span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Mapping</span> <span class="hljs-title">as</span> <span class="hljs-title">ORM</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Arxy</span>\<span class="hljs-title">EntityTranslationsBundle</span>\<span class="hljs-title">Model</span>\<span class="hljs-title">EditableTranslation</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Arxy</span>\<span class="hljs-title">TranslationsBundle</span>\<span class="hljs-title">Model</span>\<span class="hljs-title">EditableTranslation</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-title">PN</span>\<span class="hljs-title">Bundle</span>\<span class="hljs-title">LocaleBundle</span>\<span class="hljs-title">Model</span>\<span class="hljs-title">TranslationEntity</span>;
 
 <span class="hljs-comment">/**
@@ -260,7 +260,7 @@ doctrine:
 <span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Form</span>\<span class="hljs-title">AbstractType</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Form</span>\<span class="hljs-title">FormBuilderInterface</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">OptionsResolver</span>\<span class="hljs-title">OptionsResolver</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Arxy</span>\<span class="hljs-title">EntityTranslationsBundle</span>\<span class="hljs-title">Form</span>\<span class="hljs-title">Type</span>\<span class="hljs-title">TranslationsType</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Arxy</span>\<span class="hljs-title">TranslationsBundle</span>\<span class="hljs-title">Form</span>\<span class="hljs-title">Type</span>\<span class="hljs-title">TranslationsType</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-title">PN</span>\<span class="hljs-title">Bundle</span>\<span class="hljs-title">CMSBundle</span>\<span class="hljs-title">Form</span>\<span class="hljs-title">Translation</span>\<span class="hljs-title">BloggerTranslationType</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-title">PN</span>\<span class="hljs-title">Bundle</span>\<span class="hljs-title">CMSBundle</span>\<span class="hljs-title">Entity</span>\<span class="hljs-title">BloggerTag</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-title">PN</span>\<span class="hljs-title">Bundle</span>\<span class="hljs-title">SeoBundle</span>\<span class="hljs-title">Form</span>\<span class="hljs-title">SeoType</span>;

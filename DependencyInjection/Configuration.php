@@ -10,12 +10,14 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/configuration.html}
  */
-class Configuration implements ConfigurationInterface {
+class Configuration implements ConfigurationInterface
+{
 
     /**
-     * {@inheritdoc}
+     * @return TreeBuilder
      */
-    public function getConfigTreeBuilder() {
+    public function getConfigTreeBuilder(): TreeBuilder
+    {
         return new TreeBuilder('pn_locale');
     }
 

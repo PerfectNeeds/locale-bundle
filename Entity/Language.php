@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="language")
  * @ORM\Entity(repositoryClass="PN\LocaleBundle\Repository\LanguageRepository")
  */
-class Language implements \Arxy\EntityTranslationsBundle\Model\Language
+class Language implements \PN\LocaleBundle\Model\Language
 {
 
     /**
@@ -45,7 +45,7 @@ class Language implements \Arxy\EntityTranslationsBundle\Model\Language
         return $this->id;
     }
 
-    public function setLocale(string $locale)
+    public function setLocale(string $locale): self
     {
         $this->locale = $locale;
 
@@ -57,7 +57,7 @@ class Language implements \Arxy\EntityTranslationsBundle\Model\Language
         return $this->locale;
     }
 
-    public function setTitle(string $title)
+    public function setTitle(string $title): self
     {
         $this->title = $title;
 
@@ -69,7 +69,7 @@ class Language implements \Arxy\EntityTranslationsBundle\Model\Language
         return $this->title;
     }
 
-    public function setFlagAsset(string $flagAsset)
+    public function setFlagAsset(string $flagAsset): self
     {
         $this->flagAsset = $flagAsset;
 

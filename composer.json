@@ -18,7 +18,13 @@
     },
     "require": {
         "php": "^7.3 || ^8.0",
-        "symfony/framework-bundle": "~4.0|~5.0|~6.0",
-        "arxy/entity-translations-bundle": "^4.0"
+        "symfony/framework-bundle": "~4.0|~5.0|~6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0 | ^9.0",
+        "symfony/symfony": "~4.4 | ~5.0",
+        "doctrine/persistence": "~2.0",
+        "doctrine/orm": "~2.5",
+        "doctrine/doctrine-bundle": "~1.8 | ~2.0"
     }
 }

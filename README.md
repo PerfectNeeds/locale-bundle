@@ -3,11 +3,11 @@
 Very simple bundle that allows you to translate your entities.
 
 ##### Reference Repo.
-https://github.com/Warxcell/EntityTranslationsBundle
+https://github.com/Warxcell/TranslationsBundle
 
 ## Installation: 
 - composer require perfectneeds/locale-bundle "~1.0"
-- Register bundle in AppKernel.php: `new Arxy\EntityTranslationsBundle\ArxyEntityTranslationsBundle()`
+- Register bundle in AppKernel.php: `new PN\LocaleBundle\ArxyTranslationsBundle()`
 - Copy LocaleBundle inside your ptoject in `src/PN/Bundle`
 - Register bundle in AppKernel.php: `new PN\LocaleBundle\LocaleBundle()`
 - Add messages file into `app/Resources/translations` for each language called messages.{LOCALE}.php (ex. messages.ar.php)
@@ -21,13 +21,13 @@ doctrine:
    orm:
         # search for the "ResolveTargetEntityListener" class for an article about this
         resolve_target_entities: 
-            Arxy\EntityTranslationsBundle\Model\Language: 
+            PN\LocaleBundle\Model\Language: 
 ```
 
 
 ### Change the Locale in API methods
 ``` php
-$this->get('arxy_entity_translations.translator')->setLocale('ar'); //translate entities
+$this->get('pn_entity_translations.translator')->setLocale('ar'); //translate entities
 $this->get('translator')->setLocale('ar'); // translates messages
 ```
 
@@ -52,8 +52,8 @@ cms:
 namespace PN\Bundle\CMSBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Arxy\EntityTranslationsBundle\Model\Translatable;
-use PN\LocaleBundle\Model\LocaleTrait;
+use PN\LocaleBundle\Model\Translatable;
+use PN\LocaleBundle\Traits\LocaleTrait;
 
 /**
  * Blogger
@@ -148,7 +148,7 @@ BloggerTranslation.php in `CMSBundle/Entity/Translation`
 namespace PN\Bundle\CMSBundle\Entity\Translation;
 
 use Doctrine\ORM\Mapping as ORM;
-use Arxy\EntityTranslationsBundle\Model\EditableTranslation;
+use PN\LocaleBundle\Model\EditableTranslation;
 use PN\LocaleBundle\Model\TranslationEntity;
 
 /**
@@ -241,26 +241,17 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class BloggerTranslationType  extends AbstractType {
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('title')
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults(array(
             'data_class' => \PN\Bundle\CMSBundle\Entity\Translation\BloggerTranslation::class
         ));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockPrefix() {
         return 'pn_bundle_cmsbundle_blogger';
     }
@@ -278,16 +269,13 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Arxy\EntityTranslationsBundle\Form\Type\TranslationsType;
+use PN\LocaleBundle\Form\Type\TranslationsType;
 use PN\Bundle\CMSBundle\Form\Translation\BloggerTranslationType;
 use PN\Bundle\CMSBundle\Entity\BloggerTag;
 use PN\Bundle\SeoBundle\Form\SeoType;
 
 class BloggerType extends AbstractType {
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('title')
                 ->add('publish')
@@ -304,20 +292,10 @@ class BloggerType extends AbstractType {
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults(array(
             'data_class' => 'PN\Bundle\CMSBundle\Entity\Blogger'
         ));
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockPrefix() {
-        return 'pn_bundle_cmsbundle_blogger';
     }
 
 }
