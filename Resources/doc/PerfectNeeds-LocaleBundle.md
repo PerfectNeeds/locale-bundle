@@ -252,9 +252,6 @@ class BloggerTranslationType  extends AbstractType {
         ));
     }
 
-    public function getBlockPrefix() {
-        return 'pn_bundle_cmsbundle_blogger';
-    }
 }
 ```
 
@@ -296,10 +293,6 @@ class BloggerType extends AbstractType {
         $resolver->setDefaults(array(
             'data_class' => 'PN\Bundle\CMSBundle\Entity\Blogger'
         ));
-    }
-
-    public function getBlockPrefix() {
-        return 'pn_bundle_cmsbundle_blogger';
     }
 
 }
