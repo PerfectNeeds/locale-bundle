@@ -29,10 +29,12 @@ class Translator
      * @var PropertyAccessor
      */
     private $propertyAccessor = null;
+    private $defaultLocale;
 
-    public function __construct(string $locale, array $fallbackLocales = [])
+    public function __construct(string $locale, $defaultLocale, array $fallbackLocales = [])
     {
         $this->setLocale($locale);
+        $this->defaultLocale = $defaultLocale;
         $this->fallbackLocales = $fallbackLocales;
     }
 
@@ -106,6 +108,9 @@ class Translator
     public function initializeCurrentTranslation(Translatable $entity): ?string
     {
         $currentLocale = $this->getLocale();
+        if ($this->defaultLocale == $currentLocale) {
+            return null;
+        }
         if (!$this->initializeTranslation($entity, $currentLocale)) {
             $currentLocale = $this->initializeFallbackTranslation($entity);
         }
