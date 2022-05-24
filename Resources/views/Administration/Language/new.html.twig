@@ -39,7 +39,7 @@
     <script>
         $("select[name*='[locale]']").change(function () {
             var languageName = $(this).find("option:selected").data("name");
-            $('#pn_locale_bundle_language_title').val(languageName);
+            $("input[name*='[title]']").val(languageName);
         });
     </script>
 {% endblock javascripts %}
