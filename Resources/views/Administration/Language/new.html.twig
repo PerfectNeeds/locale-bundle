@@ -37,7 +37,7 @@
     <script type="text/javascript" src="{{ asset('admin/js/plugins/forms/selects/select2.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('admin/js/pages/form_validation.js') }}"></script>
     <script>
-        $("#pn_locale_bundle_language_locale").change(function () {
+        $("select[name*='[locale]']").change(function () {
             var languageName = $(this).find("option:selected").data("name");
             $('#pn_locale_bundle_language_title').val(languageName);
         });
