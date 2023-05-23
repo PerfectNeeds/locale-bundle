@@ -2,10 +2,12 @@
 
 namespace PN\LocaleBundle\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use PN\LocaleBundle\Repository\LanguageRepository;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use PN\LocaleBundle\Model\Language as LanguageInterface;
 /**
  * Language
  *
@@ -13,7 +15,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="language")
  * @ORM\Entity(repositoryClass="PN\LocaleBundle\Repository\LanguageRepository")
  */
-class Language implements \PN\LocaleBundle\Model\Language
+#[UniqueEntity("locale")]
+#[ORM\Table(name: "language")]
+#[ORM\Entity(repositoryClass: LanguageRepository::class)]
+class Language implements LanguageInterface
 {
 
     /**
@@ -21,23 +26,31 @@ class Language implements \PN\LocaleBundle\Model\Language
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
+    #[ORM\Id]
+    #[ORM\Column(name: "id", type: Types::INTEGER)]
+    #[ORM\GeneratedValue]
     private $id;
 
     /**
      * @Assert\NotBlank()
      * @ORM\Column(name="locale", type="string", length=5, unique=true)
      */
+    #[Assert\NotBlank]
+    #[ORM\Column(name: "locale", type: Types::STRING, length: 5, unique: true)]
     private $locale;
 
     /**
      * @Assert\NotBlank()
      * @ORM\Column(name="title", type="string", length=45)
      */
+    #[Assert\NotBlank]
+    #[ORM\Column(name: "title", type: Types::STRING, length: 45)]
     private $title;
 
     /**
      * @ORM\Column(name="flag_asset", type="string", length=45)
      */
+    #[ORM\Column(name: "flag_asset", type: Types::STRING, length: 45)]
     private $flagAsset;
 
     public function getId()
